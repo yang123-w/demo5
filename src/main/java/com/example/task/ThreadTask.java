@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ThreadTask implements Runnable{
 
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
     @Override
     public void run() {
-        userService.insert();
+//        UserService userService = new UserService();
+//        userService.insert();
+        System.out.println("aaa");
     }
 }

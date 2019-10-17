@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.entity.User;
 import com.example.service.UserService;
+import com.example.task.ThreadTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,8 +38,34 @@ public class UserController {
 
     @RequestMapping("thread")
     public void  thread(){
-//        ExecutorService pool = new ThreadPoolExecutor(2, 4, 1000, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(5),new ThreadFactory()
-//        https://www.cnblogs.com/dafanjoy/p/9729358.html
+        CountDownLatch countDownLatch = new CountDownLatch(5);
+        ExecutorService threadPool = Executors.newFixedThreadPool(5);
+        long millis = System.currentTimeMillis();
+        long l = 0L;
+        for (int i = 0; i < 5; i++) {
+
+            threadPool.execute(() -> {
+                try {
+                    userService.insert();
+                    countDownLatch.countDown();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            try {
+                countDownLatch.await();
+              l = System.currentTimeMillis();
+            } catch (InterruptedException e) {
+                threadPool.shutdown();
+                e.printStackTrace();
+            }finally {
+                threadPool.shutdown();
+                long l1 = millis - l;
+                System.out.println("==============>" + l1);
+            }
+        }
+
+
     }
 
 

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.*;
+
 /**
  * @Author:0xOO
  * @Date: 2018/9/26 0026
@@ -32,4 +34,12 @@ public class UserController {
             userService.insert();
         }
     }
+
+    @RequestMapping("thread")
+    public void  thread(){
+//        ExecutorService pool = new ThreadPoolExecutor(2, 4, 1000, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(5),new ThreadFactory()
+//        https://www.cnblogs.com/dafanjoy/p/9729358.html
+    }
+
+
 }

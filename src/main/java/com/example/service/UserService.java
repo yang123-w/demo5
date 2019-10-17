@@ -17,4 +17,12 @@ public class UserService {
     public User Sel(int id){
         return userMapper.Sel(id);
     }
+
+    public void insert(){
+        User user = new User();
+        user.setPassWord("111");
+        user.setRealName("aaaa");
+        user.setUserName("qqqq");
+        userMapper.insert(user);
+    }
 }

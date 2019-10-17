@@ -8,16 +8,6 @@ package com.example.entity;
 public class User {
     private Integer id;
     private String userName;
-    private String passWord;
-    private String realName;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;
@@ -42,6 +32,11 @@ public class User {
     public void setRealName(String realName) {
         this.realName = realName;
     }
+
+    private String passWord;
+    private String realName;
+
+
 
     @Override
     public String toString() {

@@ -13,11 +13,9 @@
         select * from user where id = #{id}
     </select>
 
-    <!--<insert id="insert" parameterType="com.example.entity.User">
-        insert into User (userId, userName, phone,
-        sex)
-        values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
-        #{sex,jdbcType=VARCHAR})
+    <insert id="insert" parameterType="com.example.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into User (userName, passWord,realName)
+        values (#{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR},#{realName,jdbcType=VARCHAR})
     </insert>
 
     <insert id="insertSelective" parameterType="com.example.entity.User">
@@ -54,5 +52,5 @@
 
     <select id="findAllUser" resultType="com.example.entity.User">
         select * from User
-    </select>-->
+    </select>
 </mapper>

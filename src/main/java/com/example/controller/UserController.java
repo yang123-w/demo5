@@ -25,4 +25,11 @@ public class UserController {
     public String GetUser(@PathVariable int id){
         return userService.Sel(id).toString();
     }
+
+    @RequestMapping("insert")
+    public void  insert(){
+        for(int i=0;i<10;i++){
+            userService.insert();
+        }
+    }
 }
